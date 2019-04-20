@@ -18,10 +18,11 @@ class LoginFragment : Fragment() {
         super.onCreate(savedInstanceState)
         loginViewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
         binding = FragmentLoginBinding.inflate(inflater)
-        return binding.apply {
-            lifecycleOwner = viewLifecycleOwner
-            loginViewModel = loginViewModel
-        }.root
+        binding.let {
+            it.lifecycleOwner = viewLifecycleOwner
+            it.loginViewModel = loginViewModel
+            return it.root
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

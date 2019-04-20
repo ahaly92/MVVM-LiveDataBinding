@@ -3,20 +3,19 @@ package com.example.livedata
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
-import android.view.View
+import android.databinding.Bindable
 
 class LoginViewModel : ViewModel() {
-    private val mutableEmailAddress = MutableLiveData<String>()
-    private val mutablePassword = MutableLiveData<String>()
-    val emailAddress: LiveData<String> = mutableEmailAddress
-    val password: LiveData<String> = mutablePassword
+    @Bindable
+    val email = MutableLiveData<String>()
 
-    private var userMutableLiveData: MutableLiveData<User> = MutableLiveData()
+    @Bindable
+    val password = MutableLiveData<String>()
 
-    val user: MutableLiveData<User>
-        get() = userMutableLiveData
+    private val _user = MutableLiveData<User>()
+    val user: LiveData<User> = _user
 
-    fun onClick(view: View) {
-        userMutableLiveData.value = User(emailAddress.value.orEmpty(), password.value.orEmpty())
+    fun onClick() {
+        _user.value = User(email.value.orEmpty(), password.value.orEmpty())
     }
 }
