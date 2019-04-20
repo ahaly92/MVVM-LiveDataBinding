@@ -1,12 +1,15 @@
 package com.example.livedata
 
+import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.view.View
 
 class LoginViewModel : ViewModel() {
-    var emailAddress = MutableLiveData<String>()
-    var password = MutableLiveData<String>()
+    private val mutableEmailAddress = MutableLiveData<String>()
+    private val mutablePassword = MutableLiveData<String>()
+    val emailAddress: LiveData<String> = mutableEmailAddress
+    val password: LiveData<String> = mutablePassword
 
     private var userMutableLiveData: MutableLiveData<User> = MutableLiveData()
 

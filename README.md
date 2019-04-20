@@ -1,7 +1,7 @@
-# LiveData Playground
+# LiveDataBinding Playground
 
 Architecture: MVVM
 Language: Kotlin
-Architectural Components: LiveData, Data Binding
+Android Architecture Components: LiveData, Data Binding
 
-A very barebone example of using MVVM with a couple of android architectural components
+A very bare bone example of using MVVM with a couple of android architectural components

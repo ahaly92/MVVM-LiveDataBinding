@@ -2,7 +2,6 @@ package com.example.livedata
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
-import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -11,7 +10,6 @@ import android.view.ViewGroup
 import android.widget.EditText
 import com.example.livedata.databinding.FragmentLoginBinding
 
-
 class LoginFragment : Fragment() {
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var binding: FragmentLoginBinding
@@ -19,12 +17,11 @@ class LoginFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreate(savedInstanceState)
         loginViewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false)
-        binding.let {
-            it.lifecycleOwner = this
-            it.loginViewModel = loginViewModel
-            return it.root
-        }
+        binding = FragmentLoginBinding.inflate(inflater)
+        return binding.apply {
+            lifecycleOwner = viewLifecycleOwner
+            loginViewModel = loginViewModel
+        }.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
