@@ -4,9 +4,8 @@
     <string name="place_holder_text">– –</string>
     <string name="login_button_text">Login</string>
     <string name="password_field_hint">Password</string>
-    <string name="e_mail_address_field_placeholder">E-Mail Address</string>
+    <string name="username_field_placeholder">Username</string>
     <string name="empty_email_error">Enter an E-Mail Address</string>
-    <string name="invalid_email_error">Enter a Valid E-mail Address</string>
     <string name="empty_password_error">Enter a Password</string>
     <string name="password_too_short_error">Enter at least 6 Digit password</string>
 </resources>
