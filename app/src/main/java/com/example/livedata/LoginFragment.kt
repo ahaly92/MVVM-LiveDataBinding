@@ -13,6 +13,7 @@ import com.example.livedata.LoginErrorType.EmailEmpty
 import com.example.livedata.LoginErrorType.PasswordEmpty
 import com.example.livedata.LoginErrorType.PasswordShort
 import com.example.livedata.databinding.FragmentLoginBinding
+import kotlinx.android.synthetic.main.fragment_login.password
 import kotlinx.android.synthetic.main.fragment_login.resultEmailAddress
 import kotlinx.android.synthetic.main.fragment_login.resultPassword
 import kotlinx.android.synthetic.main.fragment_login.username
@@ -39,7 +40,7 @@ class LoginFragment : Fragment() {
 
     private fun bindViewModel() {
         username.bindError(viewModel.emailError)
-        username.bindError(viewModel.passwordError)
+        password.bindError(viewModel.passwordError)
 
         //TODO: remove this logic and the result views when actually implementing login
         viewModel.user.observe(this, Observer {
