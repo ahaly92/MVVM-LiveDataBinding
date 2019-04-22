@@ -1,5 +1,6 @@
 package com.example.livedata
 
+import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -12,7 +13,8 @@ import com.example.livedata.LoginErrorType.EmailEmpty
 import com.example.livedata.LoginErrorType.PasswordEmpty
 import com.example.livedata.LoginErrorType.PasswordShort
 import com.example.livedata.databinding.FragmentLoginBinding
-import kotlinx.android.synthetic.main.fragment_login.password
+import kotlinx.android.synthetic.main.fragment_login.resultEmailAddress
+import kotlinx.android.synthetic.main.fragment_login.resultPassword
 import kotlinx.android.synthetic.main.fragment_login.username
 
 class LoginFragment : Fragment() {
@@ -36,12 +38,21 @@ class LoginFragment : Fragment() {
     }
 
     private fun bindViewModel() {
-        viewModel.emailError.observe(this, Observer {
-            it?.let { loginErrorType -> username.setErrorOnField(loginErrorType) }
-        })
+        username.bindError(viewModel.emailError)
+        username.bindError(viewModel.passwordError)
 
-        viewModel.passwordError.observe(this, Observer {
-            it?.let { loginErrorType -> password.setErrorOnField(loginErrorType) }
+        //TODO: remove this logic and the result views when actually implementing login
+        viewModel.user.observe(this, Observer {
+            it?.apply {
+                resultEmailAddress.text = username
+                resultPassword.text = password
+            }
+        })
+    }
+
+    private fun EditText.bindError(liveDataError: LiveData<LoginErrorType>) {
+        liveDataError.observe(viewLifecycleOwner, Observer {
+            it?.let { loginErrorType -> this.setErrorOnField(loginErrorType) }
         })
     }
 

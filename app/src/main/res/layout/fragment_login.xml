@@ -7,7 +7,7 @@
     <data>
 
         <variable
-            name="LoginViewModel"
+            name="loginViewModel"
             type="com.example.livedata.LoginViewModel"
             />
     </data>
@@ -27,7 +27,7 @@
             android:autofillHints="username"
             android:ems="10"
             android:hint="@string/username_field_placeholder"
-            android:text="@={LoginViewModel.username}"
+            android:text="@={loginViewModel.username}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -43,7 +43,7 @@
             android:ems="10"
             android:hint="@string/password_field_hint"
             android:inputType="textPassword"
-            android:text="@={LoginViewModel.password}"
+            android:text="@={loginViewModel.password}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/username"
@@ -55,7 +55,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_lg"
-            android:onClick="@{() -> LoginViewModel.onClick()}"
+            android:onClick="@{() -> loginViewModel.onClick()}"
             android:text="@string/login_button_text"
             android:textSize="@dimen/text_md"
             app:layout_constraintEnd_toEndOf="parent"
